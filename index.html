@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechConsult Pro | Strategic IT Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #0a2540;
+            --accent-color: #00d4ff;
+            --text-dark: #1a1a1a;
+            --text-muted: #666;
+            --bg-light: #f8fafc;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* --- Navbar --- */
+        .navbar {
+            background: var(--primary-color);
+            color: #fff;
+            padding: 1.2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo { font-size: 1.5rem; font-weight: 800; cursor: pointer; }
+        .logo span { color: var(--accent-color); }
+
+        nav ul { display: flex; list-style: none; gap: 2rem; align-items: center; }
+        nav ul li a { color: #cbd5e1; text-decoration: none; font-weight: 500; transition: var(--transition); }
+        nav ul li a:hover { color: var(--accent-color); }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            border-radius: 6px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-nav { background: var(--accent-color); color: var(--primary-color); font-size: 0.9rem; }
+        .btn-primary { background: var(--accent-color); color: var(--primary-color); }
+        .btn-secondary { background: transparent; color: #fff; border: 2px solid #fff; margin-left: 1rem; }
+        .btn-primary:hover, .btn-secondary:hover { transform: translateY(-3px); opacity: 0.9; }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(rgba(10, 37, 64, 0.85), rgba(10, 37, 64, 0.85)), 
+                        url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+        }
+
+        .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; line-height: 1.2; }
+        .hero p { font-size: 1.25rem; margin-bottom: 2rem; color: #cbd5e1; max-width: 700px; margin-inline: auto; }
+
+        /* --- Global Section Styling --- */
+        section { padding: 6rem 0; }
+        .section-header { margin-bottom: 3.5rem; text-align: center; }
+        .section-header h2 { 
+            font-size: 2.5rem; 
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--accent-color);
+        }
+
+        /* --- Services Grid --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card:hover { transform: translateY(-10px); }
+
+        .image-wrapper { width: 100%; height: 200px; overflow: hidden; background: #eee; }
+        .service-image { width: 100%; height: 100%; object-fit: cover; }
+
+        .card-body { padding: 1.5rem; flex-grow: 1; }
+        .card-body h3 { margin-bottom: 0.8rem; color: var(--primary-color); }
+        .card-body p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
+        .learn-more { color: var(--accent-color); font-weight: 700; text-decoration: none; font-size: 0.9rem; }
+
+        /* --- Why Choose Us --- */
+        .why-choose-us { background: var(--primary-color); color: #fff; }
+        .why-choose-us .section-header h2 { color: #fff; }
+        .usp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+        .usp-item h4 { font-size: 1.3rem; margin-bottom: 1rem; color: var(--accent-color); }
+        .usp-item p { color: #cbd5e1; font-size: 0.95rem; }
+
+        /* --- Testimonials --- */
+        .testimonials { background: var(--bg-light); }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .testimonial-card {
+            background: #fff;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+        blockquote { font-style: italic; color: var(--text-muted); margin-bottom: 1.5rem; font-size: 1.1rem; }
+        .client-info h5 { color: var(--primary-color); font-weight: 700; }
+        .client-info p { font-size: 0.85rem; color: var(--accent-color); }
+
+        /* --- Final CTA Section --- */
+        .cta-final {
+            background: linear-gradient(45deg, var(--primary-color), #1a3a5a);
+            color: white;
+            text-align: center;
+            padding: 5rem 0;
+        }
+        .cta-final h2 { font-size: 2.5rem; margin-bottom: 1.5rem; }
+
+        /* --- Footer --- */
+        footer {
+            background: #051526;
+            color: #fff;
+            padding: 4rem 0 2rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+        .footer-logo { font-size: 1.5rem; font-weight: 800; margin-bottom: 1rem; }
+        .footer-logo span { color: var(--accent-color); }
+        .footer-col h4 { margin-bottom: 1.5rem; border-bottom: 2px solid var(--accent-color); display: inline-block; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 0.8rem; }
+        .footer-col ul li a { color: #cbd5e1; text-decoration: none; transition: 0.3s; }
+        .footer-col ul li a:hover { color: #fff; padding-left: 5px; }
+        .copyright { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; text-align: center; font-size: 0.9rem; color: #666; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            nav ul { display: none; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <h1 class="logo">TechConsult<span>Pro</span></h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#">contact</a></li>
+                    <li><a href="#about">Why Us</a></li>
+                    <li><a href="#testimonials">Clients</a></li>
+                </ul>
+            </nav>
+            <a href="#" class="btn btn-nav">Get a Quote</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Engineering the Future of Business</h1>
+                <p>Strategic technology consulting, custom software, and cloud infrastructure designed to scale your enterprise.</p>
+                <div class="hero-btns">
+                    <a href="#services" class="btn btn-primary">Get Started</a>
+                    <a href="#about" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="services-preview">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Solutions Built to Scale</h2>
+                </div>
+
+                <div class="services-grid">
+                    <article class="service-card">
+                        <div class="image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop" alt="Web Development" class="service-image" loading="lazy">
+                        </div>
+                        <div class="card-body">
+                            <h3>Web Development</h3>
+                            <p>Custom software and enterprise web applications designed for maximum performance and security.</p>
+                            <a href="#" class="learn-more">Learn More &rarr;</a>
+                        </div>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=800&auto=format&fit=crop" alt="Cloud Infrastructure" class="service-image" loading="lazy">
+                        </div>
+                        <div class="card-body">
+                            <h3>Cloud Solutions</h3>
+                            <p>Reliable cloud migration and serverless architecture built on global infrastructure like AWS and Azure.</p>
+                            <a href="#" class="learn-more">Learn More &rarr;</a>
+                        </div>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=800&auto=format&fit=crop" alt="Digital Strategy" class="service-image" loading="lazy">
+                        </div>
+                        <div class="card-body">
+                            <h3>Digital Strategy</h3>
+                            <p>Modernizing operations with AI-driven insights and automated workflows to beat the competition.</p>
+                            <a href="#" class="learn-more">Learn More &rarr;</a>
+                        </div>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=800&auto=format&fit=crop" alt="Cybersecurity" class="service-image" loading="lazy">
+                        </div>
+                        <div class="card-body">
+                            <h3>Cybersecurity</h3>
+                            <p>Protecting your digital assets with advanced threat detection and rigorous security auditing protocols.</p>
+                            <a href="#" class="learn-more">Learn More &rarr;</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="why-choose-us">
+            <div class="container">
+                <div class="section-header">
+                    <h2>The TechConsult Edge</h2>
+                </div>
+                <div class="usp-grid">
+                    <div class="usp-item">
+                        <h4>Expert Talent</h4>
+                        <p>Our consultants bring over 15 years of industry-leading experience to your project.</p>
+                    </div>
+                    <div class="usp-item">
+                        <h4>Agile Approach</h4>
+                        <p>We deliver in rapid sprints, ensuring you see tangible progress every two weeks.</p>
+                    </div>
+                    <div class="usp-item">
+                        <h4>Security First</h4>
+                        <p>Every line of code we write is vetted for security and long-term maintainability.</p>
+                    </div>
+                    <div class="usp-item">
+                        <h4>Scalable Design</h4>
+                        <p>We build systems that handle 10x growth without needing a total redesign.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="testimonials">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Trusted by Industry Leaders</h2>
+                </div>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card">
+                        <blockquote>"TechConsult Pro transformed our legacy systems into a modern cloud powerhouse in months."</blockquote>
+                        <div class="client-info">
+                            <h5>Sarah Jenkins</h5>
+                            <p>CTO, FinStream Inc.</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <blockquote>"Their strategic approach to digital transformation gave us a 40% boost in operational efficiency."</blockquote>
+                        <div class="client-info">
+                            <h5>Marcus Thorne</h5>
+                            <p>Operations Director, Global Logistics</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <blockquote>"The best technical partners we've worked with. They truly understand business goals."</blockquote>
+                        <div class="client-info">
+                            <h5>Elena Rodriguez</h5>
+                            <p>Founder, NeoRetail</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-final">
+            <div class="container">
+                <h2>Ready to Start Your Journey?</h2>
+                <p>Let's build something extraordinary together.</p><br>
+                <a href="#" class="btn btn-primary">Request a Quote Today</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">TechConsult<span>Pro</span></div>
+                    <p>Driving innovation through strategic IT consulting and high-performance engineering.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">News</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Social</h4>
+                    <ul>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 TechConsult Pro. All Rights Reserved. Built with precision for the modern web.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
