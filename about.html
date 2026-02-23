@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | TechConsult Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #0a2540;
+            --accent-color: #00d4ff;
+            --text-dark: #1a1a1a;
+            --text-muted: #666;
+            --bg-light: #f8fafc;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* --- Shared Navbar --- */
+        .navbar {
+            background: var(--primary-color);
+            color: #fff;
+            padding: 1.2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo { font-size: 1.5rem; font-weight: 800; text-decoration: none; color: white; }
+        .logo span { color: var(--accent-color); }
+
+        nav ul { display: flex; list-style: none; gap: 2rem; align-items: center; }
+        nav ul li a { color: #cbd5e1; text-decoration: none; font-weight: 500; transition: var(--transition); }
+        nav ul li a:hover { color: var(--accent-color); }
+
+        .btn-nav {
+            background: var(--accent-color);
+            color: var(--primary-color);
+            padding: 0.6rem 1.4rem;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 700;
+        }
+
+        /* --- About Hero with Background Image --- */
+        .about-hero {
+            background: linear-gradient(rgba(10, 37, 64, 0.8), rgba(10, 37, 64, 0.8)), 
+                        url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Parallax effect */
+            color: white;
+            padding: 10rem 0 8rem;
+            text-align: center;
+        }
+
+        .about-hero h1 { font-size: 4rem; margin-bottom: 1rem; letter-spacing: -1px; }
+        .about-hero p { color: var(--accent-color); font-weight: 600; text-transform: uppercase; letter-spacing: 3px; font-size: 1rem; }
+
+        /* --- Mission & History --- */
+        .history-section { padding: 8rem 0; }
+        .history-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .history-text h2 { color: var(--primary-color); font-size: 2.5rem; margin-bottom: 1.5rem; }
+        .history-text p { margin-bottom: 1.2rem; color: var(--text-muted); font-size: 1.1rem; }
+        .history-image img { width: 100%; border-radius: 20px; box-shadow: 20px 20px 0 var(--bg-light); transition: var(--transition); }
+        .history-image img:hover { transform: scale(1.02); }
+
+        /* --- Core Values --- */
+        .values-section { background: var(--bg-light); padding: 6rem 0; }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .value-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            border-bottom: 4px solid var(--accent-color);
+            transition: var(--transition);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+        .value-card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .value-card h3 { color: var(--primary-color); margin-bottom: 1rem; }
+
+        /* --- Timeline --- */
+        .timeline-section { padding: 6rem 0; }
+        .timeline-list {
+            list-style: none;
+            position: relative;
+            max-width: 800px;
+            margin: 3rem auto 0;
+        }
+        .timeline-list::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            height: 100%;
+            width: 2px;
+            background: #e2e8f0;
+        }
+        .timeline-item {
+            padding-left: 60px;
+            position: relative;
+            margin-bottom: 3.5rem;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 13px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 0 2px var(--accent-color);
+        }
+        .timeline-date { font-weight: 800; color: var(--primary-color); display: block; font-size: 1.2rem; }
+
+        /* --- Team Section --- */
+        .team-section { padding: 8rem 0; background: var(--primary-color); color: white; }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+        .team-card { text-align: center; }
+        .team-img {
+            width: 180px;
+            height: 180px;
+            background: #cbd5e1;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            object-fit: cover;
+            border: 5px solid rgba(255,255,255,0.1);
+            transition: var(--transition);
+        }
+        .team-card:hover .team-img { border-color: var(--accent-color); transform: translateY(-5px); }
+        .team-card h4 { font-size: 1.2rem; }
+        .team-card span { color: var(--accent-color); font-size: 0.9rem; font-weight: 600; display: block; margin-bottom: 0.5rem; }
+        .team-card p { font-size: 0.85rem; color: #cbd5e1; }
+
+        /* --- Footer --- */
+        footer { background: #051526; color: #fff; padding: 4rem 0 2rem; text-align: center; }
+        .copyright { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; font-size: 0.9rem; color: #666; }
+
+        @media (max-width: 768px) {
+            .history-grid { grid-template-columns: 1fr; }
+            .about-hero h1 { font-size: 2.8rem; }
+            .about-hero { padding: 8rem 0 5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">TechConsult<span>Pro</span></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" style="color: var(--accent-color);">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="#" class="btn-nav">Get a Quote</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="about-hero">
+            <div class="container">
+                <p>Establishing Excellence</p>
+                <h1>Architecting Success</h1>
+            </div>
+        </section>
+
+        <section class="history-section">
+            <div class="container">
+                <div class="history-grid">
+                    <div class="history-text">
+                        <h2>Our Story & Mission</h2>
+                        <p>Founded in 2011, TechConsult Pro began with a simple mission: to make world-class enterprise technology accessible to growing businesses. We saw a gap between complex IT needs and the strategic vision required to execute them.</p>
+                        <p><strong>Our Mission:</strong> To empower organizations through high-performance software, secure infrastructure, and forward-thinking digital strategy that drives measurable growth.</p>
+                    </div>
+                    <div class="history-image">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop" alt="Our Team at Work">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="values-section">
+            <div class="container">
+                <div style="text-align: center;">
+                    <h2>Our Core Values</h2>
+                </div>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <h3>Integrity</h3>
+                        <p>We believe in radical transparency and always doing what is right for the client, even if it's the harder path.</p>
+                    </div>
+                    <div class="value-card">
+                        <h3>Innovation</h3>
+                        <p>Complacency is the enemy. We constantly explore emerging tech to keep our partners ahead of the curve.</p>
+                    </div>
+                    <div class="value-card">
+                        <h3>Excellence</h3>
+                        <p>We don't just ship code; we deliver polished, scalable solutions that pass the most rigorous standards.</p>
+                    </div>
+                    <div class="value-card">
+                        <h3>Partnership</h3>
+                        <p>We don't act as "vendors." We act as an extension of your team, deeply invested in your long-term success.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <div class="container">
+                <div style="text-align: center; margin-bottom: 3rem;">
+                    <h2>Our Journey</h2>
+                </div>
+                <ul class="timeline-list">
+                    <li class="timeline-item">
+                        <span class="timeline-date">2011</span>
+                        <p>TechConsult Pro is founded in a small garage in Silicon Valley with 3 developers.</p>
+                    </li>
+                    <li class="timeline-item">
+                        <span class="timeline-date">2014</span>
+                        <p>Reached our 50th client milestone and expanded into Cloud Infrastructure services.</p>
+                    </li>
+                    <li class="timeline-item">
+                        <span class="timeline-date">2018</span>
+                        <p>Opened our European headquarters in London to support our growing international base.</p>
+                    </li>
+                    <li class="timeline-item">
+                        <span class="timeline-date">2022</span>
+                        <p>Launched our dedicated AI and Automation wing, helping 200+ firms integrate Machine Learning.</p>
+                    </li>
+                    <li class="timeline-item">
+                        <span class="timeline-date">2026</span>
+                        <p>Ranked as the Top Strategic IT Partner for mid-market enterprises globally.</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="team-section">
+            <div class="container">
+                <div style="text-align: center;">
+                    <h2>Meet the Leadership</h2>
+                    <p style="color: #cbd5e1;">The minds behind the code and strategy.</p>
+                </div>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400&auto=format&fit=crop" class="team-img" alt="CEO">
+                        <span>CEO & Founder</span>
+                        <h4>David Chen</h4>
+                        <p>15+ years in software architecture and venture capital strategy.</p>
+                    </div>
+                    <div class="team-card">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&auto=format&fit=crop" class="team-img" alt="CTO">
+                        <span>Chief Technology Officer</span>
+                        <h4>Sarah Jenkins</h4>
+                        <p>Former Lead Architect at AWS with a focus on serverless systems.</p>
+                    </div>
+                    <div class="team-card">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400&auto=format&fit=crop" class="team-img" alt="Ops">
+                        <span>Head of Operations</span>
+                        <h4>Marcus Thorne</h4>
+                        <p>Expert in scaling agile teams and streamlining delivery pipelines.</p>
+                    </div>
+                    <div class="team-card">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400&auto=format&fit=crop" class="team-img" alt="Strategy">
+                        <span>Director of Strategy</span>
+                        <h4>Elena Rodriguez</h4>
+                        <p>Specializes in digital transformation for Fortune 500 companies.</p>
+                    </div>
+                    <div class="team-card">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400&auto=format&fit=crop" class="team-img" alt="Security">
+                        <span>Head of Cybersecurity</span>
+                        <h4>James Wilson</h4>
+                        <p>Leading the charge in advanced threat detection and secure coding.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="copyright">
+                <p>&copy; 2026 TechConsult Pro. All Rights Reserved. Shaping the digital landscape since 2011.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
