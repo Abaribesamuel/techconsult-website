@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | TechConsult Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #0a2540;
+            --accent-color: #00d4ff;
+            --text-dark: #1a1a1a;
+            --text-muted: #666;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* --- Shared Navbar --- */
+        .navbar {
+            background: var(--primary-color);
+            color: #fff;
+            padding: 1.2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo { font-size: 1.5rem; font-weight: 800; text-decoration: none; color: white; }
+        .logo span { color: var(--accent-color); }
+
+        nav ul { display: flex; list-style: none; gap: 2rem; align-items: center; }
+        nav ul li a { color: #cbd5e1; text-decoration: none; font-weight: 500; transition: var(--transition); }
+        nav ul li a:hover { color: var(--accent-color); }
+
+        .btn-nav {
+            background: var(--accent-color);
+            color: var(--primary-color);
+            padding: 0.6rem 1.4rem;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 700;
+        }
+
+        /* --- Services Hero --- */
+        .services-hero {
+            background: linear-gradient(rgba(10, 37, 64, 0.85), rgba(10, 37, 64, 0.85)), 
+                        url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 10rem 0 6rem;
+            text-align: center;
+        }
+
+        .services-hero h1 { font-size: 3.5rem; margin-bottom: 1rem; }
+        .services-hero p { max-width: 700px; margin: 0 auto; color: #cbd5e1; font-size: 1.1rem; }
+
+        /* --- Detailed Services Section --- */
+        .detailed-services { padding: 6rem 0; }
+        .service-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 8rem;
+            align-items: flex-start;
+        }
+
+        .service-block:nth-child(even) { direction: rtl; }
+        .service-block:nth-child(even) .service-info { direction: ltr; }
+
+        .service-image-box img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .price-tier {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: var(--bg-light);
+            color: var(--primary-color);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        .service-info h2 { font-size: 2.2rem; color: var(--primary-color); margin-bottom: 1rem; }
+        .service-info .desc { color: var(--text-muted); margin-bottom: 2rem; font-size: 1.05rem; }
+
+        .service-specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .spec-group h4 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-color); margin-bottom: 0.8rem; }
+        .spec-group ul { list-style: none; }
+        .spec-group ul li { font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--text-dark); position: relative; padding-left: 1.2rem; }
+        .spec-group ul li::before { content: '→'; position: absolute; left: 0; color: var(--accent-color); }
+
+        /* --- Comparison Table --- */
+        .comparison-section { background: var(--bg-light); padding: 6rem 0; }
+        .table-container { overflow-x: auto; margin-top: 3rem; }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        caption { padding: 1.5rem; font-weight: 700; font-size: 1.2rem; color: var(--primary-color); background: #fff; text-align: left; }
+
+        thead th { background: var(--primary-color); color: white; padding: 1.5rem 1rem; text-align: left; }
+        
+        tbody td, tbody th { padding: 1.2rem 1rem; border-bottom: 1px solid #edf2f7; }
+        tbody th { font-weight: 600; color: var(--primary-color); background: #fcfdfe; }
+
+        .check { color: #10b981; font-weight: bold; }
+        .dash { color: #cbd5e1; }
+
+        /* --- Shared Footer --- */
+        footer { background: #051526; color: #fff; padding: 4rem 0 2rem; text-align: center; }
+        .copyright { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; font-size: 0.9rem; color: #666; }
+
+        @media (max-width: 968px) {
+            .service-block { grid-template-columns: 1fr; gap: 2rem; }
+            .service-block:nth-child(even) { direction: ltr; }
+            .service-image-box img { height: 300px; }
+            .services-hero h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">TechConsult<span>Pro</span></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html" style="color: var(--accent-color);">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="#" class="btn-nav">Get a Quote</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="services-hero">
+            <div class="container">
+                <h1>Enterprise Solutions</h1>
+                <p>We provide the technical foundation and strategic oversight required to compete in the digital-first economy.</p>
+            </div>
+        </section>
+
+        <section class="detailed-services">
+            <div class="container">
+                
+                <div class="service-block">
+                    <div class="service-image-box">
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop" alt="Web Development">
+                    </div>
+                    <div class="service-info">
+                        <span class="price-tier">Tier: Standard - Premium</span>
+                        <h2>Custom Web Engineering</h2>
+                        <p class="desc">High-performance web applications built for scalability. We focus on low-latency, responsive design, and robust back-end logic to power your business processes.</p>
+                        
+                        <div class="service-specs">
+                            <div class="spec-group">
+                                <h4>Key Benefits</h4>
+                                <ul>
+                                    <li>Scalable Architecture</li>
+                                    <li>SEO Optimized</li>
+                                    <li>Mobile-First UI</li>
+                                </ul>
+                            </div>
+                            <div class="spec-group">
+                                <h4>Technologies</h4>
+                                <ul>
+                                    <li>React / Next.js</li>
+                                    <li>Node.js / Python</li>
+                                    <li>PostgreSQL</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-block">
+                    <div class="service-image-box">
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop" alt="Cloud Infrastructure">
+                    </div>
+                    <div class="service-info">
+                        <span class="price-tier">Tier: Premium</span>
+                        <h2>Cloud Infrastructure</h2>
+                        <p class="desc">Seamless migration and management of cloud-native environments. We optimize your server spend while increasing uptime and disaster recovery capabilities.</p>
+                        
+                        <div class="service-specs">
+                            <div class="spec-group">
+                                <h4>Key Benefits</h4>
+                                <ul>
+                                    <li>99.99% Uptime</li>
+                                    <li>Cost Optimization</li>
+                                    <li>Automated Backups</li>
+                                </ul>
+                            </div>
+                            <div class="spec-group">
+                                <h4>Technologies</h4>
+                                <ul>
+                                    <li>AWS / Azure</li>
+                                    <li>Docker / K8s</li>
+                                    <li>Terraform</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-block">
+                    <div class="service-image-box">
+                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop" alt="Cybersecurity">
+                    </div>
+                    <div class="service-info">
+                        <span class="price-tier">Tier: Standard</span>
+                        <h2>Security Auditing</h2>
+                        <p class="desc">Protect your digital perimeter. We conduct rigorous penetration testing and vulnerability assessments to ensure your data remains your data.</p>
+                        
+                        <div class="service-specs">
+                            <div class="spec-group">
+                                <h4>Key Benefits</h4>
+                                <ul>
+                                    <li>Threat Detection</li>
+                                    <li>Compliance Ready</li>
+                                    <li>Risk Mitigation</li>
+                                </ul>
+                            </div>
+                            <div class="spec-group">
+                                <h4>Technologies</h4>
+                                <ul>
+                                    <li>Kali Linux</li>
+                                    <li>Wireshark</li>
+                                    <li>SIEM Tools</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-block">
+                    <div class="service-image-box">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop" alt="Digital Strategy">
+                    </div>
+                    <div class="service-info">
+                        <span class="price-tier">Tier: Basic - Standard</span>
+                        <h2>Digital Transformation</h2>
+                        <p class="desc">Updating legacy workflows with modern AI and automation. We help businesses transition from manual spreadsheets to automated, data-driven dashboards.</p>
+                        
+                        <div class="service-specs">
+                            <div class="spec-group">
+                                <h4>Key Benefits</h4>
+                                <ul>
+                                    <li>Ops Efficiency</li>
+                                    <li>Data Visualization</li>
+                                    <li>Reduced Overhead</li>
+                                </ul>
+                            </div>
+                            <div class="spec-group">
+                                <h4>Technologies</h4>
+                                <ul>
+                                    <li>PowerBI / Tableau</li>
+                                    <li>OpenAI / ML</li>
+                                    <li>Zapier / Python</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="comparison-section">
+            <div class="container">
+                <div style="text-align: center; margin-bottom: 3rem;">
+                    <h2>Feature Comparison</h2>
+                    <p>Select the service that fits your project scope.</p>
+                </div>
+
+                <div class="table-container">
+                    <table border="1">
+                        <caption>A detailed breakdown of service features and inclusion scope.</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col" id="feature">Core Features</th>
+                                <th scope="col" id="web">Web Development</th>
+                                <th scope="col" id="cloud">Cloud Solutions</th>
+                                <th scope="col" id="sec">Security Audit</th>
+                                <th scope="col" id="trans">Digital Strategy</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row" id="scope1" headers="feature">Initial Consultation</th>
+                                <td headers="scope1 web" class="check">Yes</td>
+                                <td headers="scope1 cloud" class="check">Yes</td>
+                                <td headers="scope1 sec" class="check">Yes</td>
+                                <td headers="scope1 trans" class="check">Yes</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" id="scope2" headers="feature">24/7 Monitoring</th>
+                                <td headers="scope2 web" class="dash">—</td>
+                                <td headers="scope2 cloud" class="check">Yes</td>
+                                <td headers="scope2 sec" class="check">Yes</td>
+                                <td headers="scope2 trans" class="dash">—</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" id="scope3" headers="feature">Custom Codebase</th>
+                                <td headers="scope3 web" class="check">Yes</td>
+                                <td headers="scope3 cloud" class="dash">—</td>
+                                <td headers="scope3 sec" class="dash">—</td>
+                                <td headers="scope3 trans" class="check">Yes</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" id="scope4" headers="feature">Compliance Report</th>
+                                <td headers="scope4 web" class="dash">—</td>
+                                <td headers="scope4 cloud" class="check">Yes</td>
+                                <td headers="scope4 sec" class="check">Yes</td>
+                                <td headers="scope4 trans" class="dash">—</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" id="scope5" headers="feature">Monthly Strategy Call</th>
+                                <td headers="scope5 web" class="check">Yes</td>
+                                <td headers="scope5 cloud" class="check">Yes</td>
+                                <td headers="scope5 sec" class="dash">—</td>
+                                <td headers="scope5 trans" class="check">Yes</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="copyright">
+                <p>&copy; 2026 TechConsult Pro. All Rights Reserved. Engineering reliable solutions since 2011.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
