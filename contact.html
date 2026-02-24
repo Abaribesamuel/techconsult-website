@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | TechConsult Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #0a2540;
+            --accent-color: #00d4ff;
+            --text-dark: #1a1a1a;
+            --text-muted: #64748b;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+        /* --- Navbar --- */
+        .navbar {
+            background: var(--primary-color);
+            color: #fff;
+            padding: 1.2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 800; text-decoration: none; color: white; }
+        .logo span { color: var(--accent-color); }
+        nav ul { display: flex; list-style: none; gap: 2rem; }
+        nav ul li a { color: #cbd5e1; text-decoration: none; font-weight: 500; transition: var(--transition); }
+        nav ul li a:hover { color: var(--accent-color); }
+
+        .btn-nav {
+            background: var(--accent-color);
+            color: var(--primary-color);
+            padding: 0.6rem 1.4rem;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 700;
+        }
+
+        /* --- Contact Hero --- */
+        .contact-hero {
+            background: linear-gradient(rgba(10, 37, 64, 0.9), rgba(10, 37, 64, 0.9)), 
+                        url('https://images.unsplash.com/photo-1557426272-fc759fdf7a8d?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 8rem 0 6rem;
+            text-align: center;
+        }
+        .contact-hero h1 { font-size: 3.5rem; margin-bottom: 1rem; }
+
+        /* --- Layout --- */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 3rem;
+            margin-top: -4rem;
+            padding-bottom: 6rem;
+        }
+
+        /* --- Form Card --- */
+        .form-container {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+
+        fieldset {
+            border: none;
+            margin-bottom: 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        legend {
+            grid-column: span 2;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-color);
+            width: 100%;
+        }
+
+        .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+        .full-width { grid-column: span 2; }
+
+        label { font-weight: 600; font-size: 0.9rem; color: var(--primary-color); }
+        
+        input, select, textarea {
+            padding: 0.9rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.1);
+        }
+
+        .options-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            padding-top: 0.5rem;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+
+        textarea { min-height: 150px; resize: vertical; }
+
+        .form-actions {
+            grid-column: span 2;
+            display: flex;
+            gap: 1rem;
+            padding-top: 1rem;
+        }
+
+        .btn {
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .btn-submit { background: var(--accent-color); color: var(--primary-color); flex: 2; }
+        .btn-reset { background: #f1f5f9; color: var(--text-muted); flex: 1; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+
+        /* --- Sidebar --- */
+        .info-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        .info-card h3 { color: var(--primary-color); margin-bottom: 1.2rem; border-left: 4px solid var(--accent-color); padding-left: 10px; }
+        .info-card p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0.8rem; }
+        
+        .map-placeholder {
+            width: 100%;
+            height: 250px;
+            background: #e2e8f0;
+            border-radius: 12px;
+            margin-top: 1rem;
+            overflow: hidden;
+        }
+
+        footer { background: #051526; color: white; padding: 4rem 0; text-align: center; }
+
+        @media (max-width: 992px) {
+            .main-content { grid-template-columns: 1fr; }
+            fieldset { grid-template-columns: 1fr; }
+            .full-width, legend, .form-actions { grid-column: span 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">TechConsult<span>Pro</span></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="contact.html" style="color: var(--accent-color);">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="#" class="btn-nav">Get a Quote</a>
+        </div>
+    </header>
+
+    <section class="contact-hero">
+        <div class="container">
+            <h1>Contact Us</h1>
+        </div>
+    </section>
+
+    <main class="container">
+        <div class="main-content">
+            
+            <section class="form-container">
+                <form action="#" method="POST" enctype="multipart/form-data">
+                    
+                    <fieldset>
+                        <legend>Basic Information</legend>
+                        <div class="form-group">
+                            <label for="full-name">Full Name *</label>
+                            <input type="text" id="full-name" name="user_name" placeholder="Enter your full name" required tabindex="1">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="user_email" placeholder="email@company.com" 
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required tabindex="2">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number * (XXX-XXX-XXXX)</label>
+                            <input type="tel" id="phone" name="user_phone" placeholder="555-012-3456" 
+                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required tabindex="3">
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Company Name</label>
+                            <input type="text" id="company" name="user_company" placeholder="e.g. TechCorp" tabindex="4">
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="title">Job Title</label>
+                            <input type="text" id="title" name="user_title" placeholder="e.g. Project Manager" tabindex="5">
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Inquiry Details</legend>
+                        <div class="form-group full-width">
+                            <label>Inquiry Type *</label>
+                            <div class="options-flex">
+                                <label class="option-label"><input type="radio" name="inquiry_type" value="general" required> General Question</label>
+                                <label class="option-label"><input type="radio" name="inquiry_type" value="service"> Service Request</label>
+                                <label class="option-label"><input type="radio" name="inquiry_type" value="partnership"> Partnership</label>
+                                <label class="option-label"><input type="radio" name="inquiry_type" value="career"> Career Inquiry</label>
+                                <label class="option-label"><input type="radio" name="inquiry_type" value="other"> Other</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label>Service Interest</label>
+                            <div class="options-flex">
+                                <label class="option-label"><input type="checkbox" name="service" value="web"> Web Dev</label>
+                                <label class="option-label"><input type="checkbox" name="service" value="cloud"> Cloud</label>
+                                <label class="option-label"><input type="checkbox" name="service" value="digital"> Digital Transformation</label>
+                                <label class="option-label"><input type="checkbox" name="service" value="support"> IT Support</label>
+                                <label class="option-label"><input type="checkbox" name="service" value="none"> None/Other</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="budget">Budget Range *</label>
+                            <select id="budget" name="user_budget" required tabindex="6">
+                                <option value="" disabled selected>Select a range</option>
+                                <option value="u5k">Under $5,000</option>
+                                <option value="5k-10k">$5,000 - $10,000</option>
+                                <option value="10k-25k">$10,000 - $25,000</option>
+                                <option value="25k-50k">$25,000 - $50,000</option>
+                                <option value="50k+">$50,000+</option>
+                                <option value="not_sure">Not Sure</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Project Timeline *</label>
+                            <div class="options-flex">
+                                <label class="option-label"><input type="radio" name="timeline" value="immediate" required> Immediate</label>
+                                <label class="option-label"><input type="radio" name="timeline" value="short"> 1-3 Months</label>
+                                <label class="option-label"><input type="radio" name="timeline" value="flexible"> Flexible</label>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Project Details</legend>
+                        <div class="form-group full-width">
+                            <label for="desc">Project Description * (Min 50 chars)</label>
+                            <textarea id="desc" name="project_desc" minlength="50" placeholder="Please describe your project..." required tabindex="7"></textarea>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="reqs">Specific Requirements</label>
+                            <textarea id="reqs" name="specific_reqs" placeholder="Any specific technical needs?" tabindex="8"></textarea>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="file">Attach Docs (.pdf, .doc, .docx)</label>
+                            <input type="file" id="file" name="files" accept=".pdf,.doc,.docx" multiple tabindex="9">
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Preferences & Agreement</legend>
+                        <div class="form-group">
+                            <label>Preferred Contact Method *</label>
+                            <div class="options-flex">
+                                <label class="option-label"><input type="radio" name="contact_pref" value="email" required> Email</label>
+                                <label class="option-label"><input type="radio" name="contact_pref" value="phone"> Phone</label>
+                                <label class="option-label"><input type="radio" name="contact_pref" value="video"> Video Call</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Best Time to Contact</label>
+                            <input type="time" id="time" name="contact_time" tabindex="10">
+                        </div>
+                        <div class="form-group full-width">
+                            <label class="option-label"><input type="checkbox" name="news"> Subscribe to Newsletter</label>
+                            <label class="option-label"><input type="checkbox" name="privacy" required> I agree to the <a href="privacy-policy.html">Privacy Policy</a> *</label>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="reset" class="btn btn-reset">Reset</button>
+                            <button type="submit" class="btn btn-submit">Submit Inquiry</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </section>
+
+            <aside class="sidebar">
+                <div class="info-card">
+                    <h3>Headquarters</h3>
+                    <p>123 Innovation Drive, Suite 400<br>Silicon Valley, CA 94025</p>
+                </div>
+                <div class="info-card">
+                    <h3>Contact Info</h3>
+                    <p><strong>Sales:</strong> +1 (555) 012-3456</p>
+                    <p><strong>Support:</strong> +1 (555) 012-9999</p>
+                    <p><strong>Email:</strong> solutions@techconsult.pro</p>
+                </div>
+                <div class="info-card">
+                    <h3>Office Hours</h3>
+                    <p>Mon - Fri: 8:00 AM - 6:00 PM PST</p>
+                    <div class="map-placeholder">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.639290622367!2d-122.0838511!3d37.4224082!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fbbaad09d83bb%3A0x239a6537c2a4abc0!2sGoogleplex!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 TechConsult Pro. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
