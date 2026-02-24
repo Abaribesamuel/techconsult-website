@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Join TechConsult Pro. Explore high-impact roles in Solutions Architecture, Frontend Engineering, and DevOps. Apply today to build the future of tech.">
+    <title>Careers | TechConsult Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0a2540;
+            --secondary-bg: #f8fafc;
+            --accent-color: #00d4ff;
+            --accent-hover: #00b8e6;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --white: #ffffff;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 10px 15px -3px rgba(0,0,0,0.1);
+            --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Reset & Base */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--white);
+            scroll-behavior: smooth;
+        }
+
+        /* Accessibility: Skip Link */
+        .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 0;
+            background: var(--accent-color);
+            color: var(--primary-color);
+            padding: 1rem;
+            z-index: 2000;
+            transition: var(--transition);
+            font-weight: 700;
+        }
+        .skip-link:focus { top: 0; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+        /* Navigation */
+        header.navbar {
+            background: rgba(10, 37, 64, 0.98);
+            backdrop-filter: blur(10px);
+            color: #fff;
+            padding: 1.25rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .navbar .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 800; text-decoration: none; color: white; letter-spacing: -0.5px; }
+        .logo span { color: var(--accent-color); }
+        
+        nav ul { display: flex; list-style: none; gap: 2.5rem; }
+        nav ul li a { 
+            color: #cbd5e1; 
+            text-decoration: none; 
+            font-weight: 500; 
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+        nav ul li a:hover, nav ul li a[aria-current="page"] { color: var(--accent-color); }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, rgba(10, 37, 64, 0.92), rgba(10, 37, 64, 0.8)), 
+                        url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 10rem 0 8rem;
+            text-align: center;
+        }
+        .hero h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 1.5rem; letter-spacing: -1px; }
+        .hero p { font-size: 1.25rem; color: #cbd5e1; max-width: 700px; margin: 0 auto; }
+
+        /* Sections General */
+        section { padding: 8rem 0; }
+        .section-title { text-align: center; margin-bottom: 5rem; }
+        .section-title h2 { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1.25rem; }
+        .section-title p { color: var(--text-muted); font-size: 1.1rem; }
+
+        /* Job Card Styling */
+        .job-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 3rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+        .job-card:hover { transform: translateY(-5px); border-color: var(--accent-color); box-shadow: var(--shadow-md); }
+        .job-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; }
+        .job-tag { background: #e0faff; color: #007085; padding: 0.35rem 1rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; }
+
+        /* Form Styling */
+        .apply-container {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 4rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            box-shadow: var(--shadow-lg);
+        }
+        fieldset { border: none; margin-bottom: 3.5rem; }
+        legend { font-size: 1.6rem; font-weight: 800; color: var(--primary-color); margin-bottom: 2.5rem; border-bottom: 3px solid var(--accent-color); padding-bottom: 0.5rem; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .full-width { grid-column: span 2; }
+        label { display: block; margin-bottom: 0.75rem; font-weight: 600; color: var(--primary-color); }
+        input, select, textarea {
+            width: 100%; padding: 1rem; border: 2px solid var(--border-color); border-radius: 10px; font-family: inherit; font-size: 1rem; transition: var(--transition);
+        }
+        input:focus, textarea:focus { outline: none; border-color: var(--accent-color); background: #f0fbff; }
+
+        /* Professional Footer */
+        footer { background: var(--primary-color); color: #94a3b8; padding: 6rem 0 2rem; font-size: 0.95rem; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.5fr; gap: 4rem; margin-bottom: 4rem; }
+        .footer-brand .logo { display: block; margin-bottom: 1.5rem; }
+        .footer-brand p { line-height: 1.8; max-width: 300px; }
+        .footer-heading { color: var(--white); font-size: 1.1rem; font-weight: 700; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 0.8rem; }
+        .footer-links a { color: #94a3b8; text-decoration: none; transition: var(--transition); }
+        .footer-links a:hover { color: var(--accent-color); padding-left: 5px; }
+        .footer-contact address { font-style: normal; line-height: 1.8; color: #cbd5e1; }
+        .footer-bottom { padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
+        .legal-links { display: flex; gap: 2rem; }
+        .legal-links a { font-size: 0.85rem; color: #64748b; text-decoration: none; }
+        .legal-links a:hover { color: var(--white); }
+
+        /* UI Elements */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center; padding: 1rem 2.5rem; border-radius: 8px; font-weight: 700; text-decoration: none; cursor: pointer; border: none; transition: var(--transition);
+        }
+        .btn-primary { background: var(--accent-color); color: var(--primary-color); }
+        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); }
+
+        @media (max-width: 992px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .form-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo" aria-label="TechConsult Pro Home">TechConsult<span>Pro</span></a>
+            <nav aria-label="Main Navigation">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="careers.html" aria-current="page">Careers</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section class="hero">
+            <div class="container">
+                <h1>Architect Your Career</h1>
+                <p>Join an elite collective of engineers and strategists building the next generation of enterprise infrastructure.</p>
+            </div>
+        </section>
+
+        <section id="openings" aria-labelledby="jobs-title">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="jobs-title">Available Positions</h2>
+                    <p>We are currently looking for world-class talent to join our remote-first team.</p>
+                </div>
+
+                <article class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <span class="job-tag">Engineering</span>
+                            <h3 style="font-size: 1.8rem; margin-top: 0.75rem; color: var(--primary-color);">Senior Solutions Architect</h3>
+                        </div>
+                        <div style="text-align: right;">
+                            <p style="font-weight: 700; color: var(--primary-color);">Remote / Full-Time</p>
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">Ref: TCP-2026-08</p>
+                        </div>
+                    </div>
+                    <p style="margin: 1.5rem 0; font-size: 1.1rem; color: var(--text-main);">
+                        Design complex cloud ecosystems for Global 500 firms. You will lead technical discovery and provide high-level guidance on AWS/Azure migration strategies.
+                    </p>
+                    <div style="margin-bottom: 2rem;">
+                        <h4 style="margin-bottom: 0.75rem; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px;">Core Requirements</h4>
+                        <ul style="padding-left: 1.5rem; color: var(--text-muted);">
+                            <li>8+ years of professional software architecture experience.</li>
+                            <li>Expert-level knowledge of Kubernetes and Microservices.</li>
+                            <li>Strong communication skills for C-suite stakeholder management.</li>
+                        </ul>
+                    </div>
+                    <a href="#apply" class="btn btn-primary">Begin Application</a>
+                </article>
+            </div>
+        </section>
+
+        <section id="apply" style="background-color: var(--secondary-bg);">
+            <div class="container">
+                <div class="apply-container">
+                    <div class="section-title" style="margin-bottom: 4rem;">
+                        <h2 id="apply-title">Apply for this Role</h2>
+                        <p>Our talent team reviews every application within 48 hours.</p>
+                    </div>
+
+                    <form action="/submit-app" method="POST" enctype="multipart/form-data">
+                        <fieldset>
+                            <legend>1. Identification</legend>
+                            <div class="form-grid">
+                                <div>
+                                    <label for="full-name">Legal Full Name</label>
+                                    <input type="text" id="full-name" name="name" autocomplete="name" required placeholder="Jane Doe">
+                                </div>
+                                <div>
+                                    <label for="email">Primary Email Address</label>
+                                    <input type="email" id="email" name="email" autocomplete="email" required placeholder="jane.doe@example.com">
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>2. Professional Assets</legend>
+                            <div class="form-grid">
+                                <div class="full-width">
+                                    <label for="resume">CV / Resume (PDF Only)</label>
+                                    <input type="file" id="resume" name="resume" accept=".pdf" required aria-describedby="resume-hint">
+                                    <small id="resume-hint" style="color: var(--text-muted);">Max file size: 5MB</small>
+                                </div>
+                                <div class="full-width">
+                                    <label for="cover-letter">Expression of Interest (Brief Summary)</label>
+                                    <textarea id="cover-letter" name="cover" minlength="100" rows="6" required placeholder="What makes you a unique fit for TechConsult Pro?"></textarea>
+                                </div>
+                                <div>
+                                    <label for="linkedin">LinkedIn Profile</label>
+                                    <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/username">
+                                </div>
+                                <div>
+                                    <label for="start-date">Availability to Start</label>
+                                    <input type="date" id="start-date" name="start_date" required>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <div style="text-align: center;">
+                            <button type="submit" class="btn btn-primary" style="width: 100%; max-width: 450px; font-size: 1.1rem;">Submit Formal Application</button>
+                            <p style="margin-top: 1.5rem; font-size: 0.85rem; color: var(--text-muted);">
+                                By submitting, you agree to our <a href="privacy.html" style="color: var(--accent-color);">Privacy Policy</a>.
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo" aria-label="TechConsult Pro Home">
+                        TechConsult<span>Pro</span>
+                    </a>
+                    <p>Excellence in digital architecture and strategic technology consultation for the modern enterprise.</p>
+                </div>
+
+                <nav aria-label="Corporate Navigation">
+                    <h2 class="footer-heading">Company</h2>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <nav aria-label="Technical Resources">
+                    <h2 class="footer-heading">Resources</h2>
+                    <ul class="footer-links">
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">Whitepapers</a></li>
+                        <li><a href="#">System Status</a></li>
+                        <li><a href="#">Client Login</a></li>
+                    </ul>
+                </nav>
+
+                <div class="footer-contact">
+                    <h2 class="footer-heading">Global HQ</h2>
+                    <address>
+                        123 Innovation Way, Tech City<br>
+                        San Francisco, CA 94105<br>
+                        United States
+                    </address>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="mailto:careers@techconsultpro.com" style="color: var(--accent-color); font-weight: 600; text-decoration: none;">careers@techconsultpro.com</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <time datetime="2026">2026</time> TechConsult Pro. All rights reserved.</p>
+                <nav class="legal-links" aria-label="Legal Navigation">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="#">Cookie Settings</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
